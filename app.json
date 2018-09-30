@@ -1,10 +1,10 @@
 {
-  "name": "demoIgniteExpo",
-  "displayName": "demoIgniteExpo",
+  "name": "demo-ignite-expo",
+  "displayName": "demo-ignite-expo",
   "expo": {
-    "name": "demoIgniteExpo",
+    "name": "demo-ignite-expo",
     "description": "No description",
-    "slug": "demoIgniteExpo",
+    "slug": "demo-ignite-expo",
     "privacy": "public",
     "sdkVersion": "30.0.0",
     "version": "1.0.0",

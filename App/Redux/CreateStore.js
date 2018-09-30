@@ -4,6 +4,7 @@ import ReduxPersist from '../Config/ReduxPersist'
 import Config from '../Config/DebugConfig'
 import createSagaMiddleware from 'redux-saga'
 import ScreenTracking from './ScreenTrackingMiddleware'
+import { devToolsEnhancer } from 'redux-devtools-extension'
 
 // creates the store
 export default (rootReducer, rootSaga) => {
@@ -24,6 +25,7 @@ export default (rootReducer, rootSaga) => {
   /* ------------- Assemble Middleware ------------- */
 
   enhancers.push(applyMiddleware(...middleware))
+  enhancers.push(devToolsEnhancer())
 
   // if Reactotron is enabled (default for __DEV__), we'll create the store through Reactotron
   const createAppropriateStore = Config.useReactotron ? console.tron.createStore : createStore

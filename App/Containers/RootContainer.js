@@ -7,8 +7,13 @@ import ReduxPersist from '../Config/ReduxPersist'
 // Styles
 import styles from './Styles/RootContainerStyles'
 import AppNavigation from '../Navigation/AppNavigation'
+import { AppLoading } from 'expo'
 
 class RootContainer extends Component {
+  state = {
+    isReady: false
+  }
+
   componentDidMount () {
     // if redux persist is not active fire startup action
     if (!ReduxPersist.active) {
@@ -16,13 +21,26 @@ class RootContainer extends Component {
     }
   }
 
+  async componentWillMount () {
+    await Expo.Font.loadAsync({
+      'Roboto': require('native-base/Fonts/Roboto.ttf'),
+      'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+      'Ionicons': require('native-base/Fonts/Ionicons.ttf')
+    })
+    this.setState({isReady: true})
+  }
+
   render () {
-    return (
-      <View style={styles.applicationView}>
-        <StatusBar barStyle='light-content' />
-        <AppNavigation />
-      </View>
-    )
+    if (this.state.isReady) {
+      return (
+        <View style={styles.applicationView}>
+          <StatusBar barStyle='light-content' />
+          <AppNavigation />
+        </View>
+      )
+    } else {
+      return <AppLoading />
+    }
   }
 }
 
