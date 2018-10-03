@@ -7,12 +7,26 @@ import { connect } from 'react-redux'
 // Styles
 import styles from './Styles/ScreenOneScreenStyle'
 
+import { Button } from 'native-base'
+
 class ScreenOneScreen extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {}
+  }
+
+  _onClick () {
+    this.props.navigation.navigate('ScreenTwo')
+  }
+
   render () {
     return (
       <ScrollView style={styles.container}>
         <KeyboardAvoidingView behavior='position'>
           <Text>ScreenOneScreen</Text>
+          <Button onPress={() => this._onClick(0)}>
+            <Text>12345</Text>
+          </Button>
         </KeyboardAvoidingView>
       </ScrollView>
     )
