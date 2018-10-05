@@ -26,7 +26,40 @@ import {
 } from 'native-base'
 
 class CurrentMonthRecordsScreen extends Component {
-  dummyRecords = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  dummyRecords = [
+    {
+      id: 1,
+      date: '2018-9-18',
+      description: '食飯',
+      paymentMethod: '現金',
+      type: 'expense',
+      amount: 100
+    },
+    {
+      id: 2,
+      date: '2018-9-18',
+      description: '買野',
+      paymentMethod: '現金',
+      type: 'expense',
+      amount: 1000
+    },
+    {
+      id: 3,
+      date: '2018-9-18',
+      description: '人工',
+      paymentMethod: '支票',
+      type: 'income',
+      amount: 15000
+    },
+    {
+      id: 4,
+      date: '2018-9-18',
+      description: '食飯',
+      paymentMethod: '現金',
+      type: 'expense',
+      amount: 204
+    }
+  ]
 
   constructor (props) {
     super(props)
@@ -37,11 +70,7 @@ class CurrentMonthRecordsScreen extends Component {
     return (
       <Container>
         <Header>
-          <Left>
-            <Button transparent>
-              <Icon name='menu' />
-            </Button>
-          </Left>
+          <Left />
           <Body>
             <Title>本月紀錄</Title>
           </Body>
@@ -58,14 +87,12 @@ class CurrentMonthRecordsScreen extends Component {
                     source={{uri: 'https://cdn4.iconfinder.com/data/icons/objects-things-essentials-vol-2/48/v-27-512.png'}} />
                 </Left>
                 <Body>
-                  <Text>2018-9-18</Text>
-                  <Text>食飯</Text>
-                  <Text note>現金</Text>
+                  <Text style={[styles.date]}>{record.date}</Text>
+                  <Text style={[styles.description]}>{record.description}</Text>
+                  <Text note style={[styles.paymentMethod]}>{record.paymentMethod}</Text>
                 </Body>
                 <Right>
-                  <Button transparent>
-                    <Text>View</Text>
-                  </Button>
+                  <Text style={[record.type === 'expense' ? styles.expense : styles.income]}>${record.amount}</Text>
                 </Right>
               </ListItem>
             } />

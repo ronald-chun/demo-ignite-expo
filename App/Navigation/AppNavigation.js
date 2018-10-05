@@ -46,8 +46,9 @@ const BaseNavigator = createBottomTabNavigator({
       return {
         tabBarLabel: '過往紀錄',
         tabBarIcon: ({tintColor, focused}) => (
-          focused ? <MaterialCommunityIcons name='history' size={32} color={tintColor} /> : <MaterialCommunityIcons
-            name='history' size={32} />
+          focused
+            ? <MaterialCommunityIcons name='history' size={32} color={tintColor} />
+            : <MaterialCommunityIcons name='history' size={32} />
         )
       }
     }
