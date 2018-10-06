@@ -27,6 +27,7 @@ import {
   Textarea,
   DatePicker
 } from 'native-base'
+import { Calendar } from 'react-native-calendars'
 
 class AddRecordScreen extends Component {
   constructor (props) {
@@ -37,7 +38,13 @@ class AddRecordScreen extends Component {
       description: null,
       paymentMethod: 'cash',
       paymentMethodOthers: null,
-      date: new Date()
+      date: {
+        day: new Date().getDate(),
+        month: new Date().getMonth() + 1,
+        year: new Date().getFullYear(),
+        timestamp: +new Date(),
+        dateString: new Date().getFullYear() + '-' + ('0' + (new Date().getMonth() + 1)).slice(-2) + '-' + ('0' + (new Date().getDate())).slice(-2)
+      }
     }
   }
 
@@ -139,18 +146,34 @@ class AddRecordScreen extends Component {
             <Item last>
               <Label>日期</Label>
               <Right>
-                <DatePicker
-                  defaultDate={this.state.date}
-                  modalTransparent={false}
-                  animationType={'fade'}
-                  androidMode={'default'}
-                  onDateChange={(date) => this.setState({date})}
+                <Input
+                  disabled
+                  value={this.state.date.dateString}
+                  style={[styles.dateInput]}
                 />
               </Right>
             </Item>
+            <Item stackedLabel>
+              <Calendar
+                style={[styles.calendar]}
+                current={this.state.date}
+                onDayPress={(day) => this.setState({date: day})}
+                markedDates={{
+                  [this.state.date.dateString]: {selected: true}
+                }}
+                monthFormat={'MMM yyyy'}
+                renderArrow={(direction) =>
+                  direction === 'left'
+                    ? <Icon name='arrow-back' />
+                    : <Icon name='arrow-forward' />
+                }
+                onPressArrowLeft={substractMonth => substractMonth()}
+                onPressArrowRight={addMonth => addMonth()}
+              />
+            </Item>
           </Form>
         </Content>
-        <Button full primary onPress={() => console.log('')}>
+        <Button full primary onPress={() => console.log(this.state)}>
           <Text>新增</Text>
         </Button>
       </Container>

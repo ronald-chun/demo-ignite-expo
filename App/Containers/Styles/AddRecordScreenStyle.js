@@ -8,8 +8,8 @@ export default StyleSheet.create({
     // backgroundColor: Colors.background
   },
   amountInput: {
-    width: '80%',
-    textAlign: 'right'
+    textAlign: 'right',
+    width: '100%'
   },
   descriptionTextArea: {
     paddingLeft: 0,
@@ -20,4 +20,11 @@ export default StyleSheet.create({
   paymentMethodOthersInput: {
     textAlign: 'right'
   },
+  dateInput: {
+    textAlign: 'right',
+    width: '100%'
+  },
+  calendar: {
+    width: '100%'
+  }
 })
