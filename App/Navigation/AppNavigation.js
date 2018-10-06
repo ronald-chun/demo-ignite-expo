@@ -10,6 +10,7 @@ import ScreenOneScreen from '../Containers/ScreenOneScreen'
 import ScreenTwo from '../Containers/ScreenTwo'
 import CurrentMonthRecordsScreen from '../Containers/CurrentMonthRecordsScreen'
 import PreviousMonthsRecordsScreen from '../Containers/PreviousMonthsRecordsScreen'
+import AddRecordScreen from '../Containers/AddRecordScreen'
 
 // Manifest of possible screens
 const PrimaryNav = createStackNavigator({
@@ -27,7 +28,7 @@ const PrimaryNav = createStackNavigator({
 })
 
 const BaseNavigator = createBottomTabNavigator({
-  CurrentMonthRecords: {
+  CurrentMonthRecordsScreen: {
     screen: CurrentMonthRecordsScreen,
     navigationOptions: ({navigation}) => {
       return {
@@ -40,7 +41,7 @@ const BaseNavigator = createBottomTabNavigator({
       }
     }
   },
-  PreviousMonthsRecords: {
+  PreviousMonthsRecordsScreen: {
     screen: PreviousMonthsRecordsScreen,
     navigationOptions: ({navigation}) => {
       return {
@@ -52,9 +53,22 @@ const BaseNavigator = createBottomTabNavigator({
         )
       }
     }
+  },
+  AddRecordScreen: {
+    screen: AddRecordScreen,
+    navigationOptions: ({navigation}) => {
+      return {
+        tabBarLabel: '新增紀錄',
+        tabBarIcon: ({tintColor, focused}) => (
+          focused
+            ? <Ionicons name='ios-add' size={32} color={tintColor} />
+            : <Ionicons name='ios-add' size={32} />
+        )
+      }
+    }
   }
 }, {
-  initialRouteName: 'CurrentMonthRecords'
+  initialRouteName: 'AddRecordScreen'
 })
 
 export default BaseNavigator

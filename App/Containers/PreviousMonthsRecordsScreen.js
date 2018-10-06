@@ -89,8 +89,16 @@ class PreviousMonthsRecordsScreen extends Component {
                 </ListItem>
                 {item.months.map((month) => {
                   return (
-                    <ListItem key={month} noIndent onPress={() => this.props.navigation.navigate('CurrentMonthRecords')}>
-                      <Text>{month}月</Text>
+                    <ListItem
+                      key={month}
+                      noIndent
+                      onPress={() => this.props.navigation.navigate('CurrentMonthRecordsScreen')}>
+                      <Left>
+                        <Text>{month}月</Text>
+                      </Left>
+                      <Right>
+                        <Icon name='arrow-forward' />
+                      </Right>
                     </ListItem>
                   )
                 })}
