@@ -25,13 +25,13 @@ import {
   Icon,
   Label,
   Textarea,
-  DatePicker
 } from 'native-base'
 import { Calendar } from 'react-native-calendars'
 
 class AddRecordScreen extends Component {
   constructor (props) {
     super(props)
+
     this.state = {
       type: 'expense',
       amount: null,

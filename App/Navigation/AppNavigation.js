@@ -11,17 +11,18 @@ import ScreenTwo from '../Containers/ScreenTwo'
 import CurrentMonthRecordsScreen from '../Containers/CurrentMonthRecordsScreen'
 import PreviousMonthsRecordsScreen from '../Containers/PreviousMonthsRecordsScreen'
 import AddRecordScreen from '../Containers/AddRecordScreen'
+import TestingScreen from '../Containers/TestingScreen'
 
 // Manifest of possible screens
 const PrimaryNav = createStackNavigator({
   LaunchScreen: {screen: LaunchScreen},
   ScreenOneScreen: {screen: ScreenOneScreen},
   ScreenTwo: {screen: ScreenTwo},
-  CurrentMonthRecordsScreen: {screen: CurrentMonthRecordsScreen}
+  TestingScreen: {screen: TestingScreen}
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'tabs',
+  initialRouteName: 'TestingScreen',
   navigationOptions: {
     headerStyle: styles.header
   }
@@ -66,9 +67,10 @@ const BaseNavigator = createBottomTabNavigator({
         )
       }
     }
-  }
+  },
 }, {
   initialRouteName: 'AddRecordScreen'
 })
 
 export default BaseNavigator
+// export default PrimaryNav

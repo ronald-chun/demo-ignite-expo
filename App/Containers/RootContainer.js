@@ -8,6 +8,7 @@ import ReduxPersist from '../Config/ReduxPersist'
 import styles from './Styles/RootContainerStyles'
 import AppNavigation from '../Navigation/AppNavigation'
 import { AppLoading } from 'expo'
+import { KeyboardAccessoryNavigation } from 'react-native-keyboard-accessory'
 
 class RootContainer extends Component {
   state = {
@@ -36,6 +37,10 @@ class RootContainer extends Component {
         <View style={styles.applicationView}>
           <StatusBar barStyle='light-content' />
           <AppNavigation />
+          <KeyboardAccessoryNavigation
+            nextHidden
+            previousHidden
+          />
         </View>
       )
     } else {
